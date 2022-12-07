@@ -135,7 +135,12 @@ PlayerSettings:
     16:9: 1
     Others: 1
   bundleVersion: 0.1
-  preloadedAssets: []
+  preloadedAssets:
+  - {fileID: 0}
+  - {fileID: -202553270813037863, guid: d8a80a9f9b005c549af99f6a40a0e212, type: 2}
+  - {fileID: 1634174006235225482, guid: a0987e16f3d70134ea5d70c459ddd98f, type: 2}
+  - {fileID: 11400000, guid: c677e5c4eb85b7849a8da406775c299d, type: 2}
+  - {fileID: 0}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -622,14 +627,14 @@ PlayerSettings:
     Standalone: 3
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
-  metroPackageName: TemplateLightweight
+  metroPackageName: TelloDemo
   metroPackageVersion: 1.0.0.0
-  metroCertificatePath: 
+  metroCertificatePath: Assets\WSATestCertificate.pfx
   metroCertificatePassword: 
-  metroCertificateSubject: 
-  metroCertificateIssuer: 
-  metroCertificateNotAfter: 0000000000000000
-  metroApplicationDescription: Template_Lightweight
+  metroCertificateSubject: DefaultCompany
+  metroCertificateIssuer: DefaultCompany
+  metroCertificateNotAfter: 80cc202a8629da01
+  metroApplicationDescription: TelloDemo
   wsaImages: {}
   metroTileShortName: HL2Tello
   metroTileShowName: 0
@@ -645,9 +650,14 @@ PlayerSettings:
   metroSplashScreenUseBackgroundColor: 0
   platformCapabilities:
     WindowsStoreApps:
-      SpatialPerception: True
-      WebCam: True
       GazeInput: True
+      Location: True
+      PrivateNetworkClientServer: True
+      InternetClientServer: True
+      SpatialPerception: True
+      PicturesLibrary: False
+      InternetClient: True
+      WebCam: True
   metroTargetDeviceFamilies: {}
   metroFTAName: 
   metroFTAFileTypes: []
