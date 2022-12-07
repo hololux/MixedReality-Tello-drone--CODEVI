@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/TestScene.unity
+    path: Assets/Scenes/DroniePlayground.unity
     guid: 101b9a0979eb6ef4ca99d34943bf026b
   m_configObjects:
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: a0987e16f3d70134ea5d70c459ddd98f, type: 2}
