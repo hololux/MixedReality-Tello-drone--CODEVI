@@ -50,7 +50,7 @@ public class UDPClient : MonoBehaviour
             // Sends a message to the host to which you have connected.
             Byte[] sendBytes = Encoding.ASCII.GetBytes(message);
             udpClient.Send(sendBytes, sendBytes.Length);
-            udpClientB.Send(sendBytes, sendBytes.Length, "", 9000);
+            //udpClientB.Send(sendBytes, sendBytes.Length, "", 9000);
             Debug.Log("Sending message: " + message);
 
         }
@@ -64,7 +64,7 @@ public class UDPClient : MonoBehaviour
     public void DisconnectTello()
     {
         udpClient.Close();
-        udpClientB.Close();
+        ///udpClientB.Close();
 
     }
     void Recieve()
