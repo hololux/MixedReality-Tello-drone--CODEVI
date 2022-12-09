@@ -4,13 +4,15 @@ using UnityEngine;
 using System.Net.Sockets;
 using System;
 using System.Text;
+using System.Threading.Tasks;
 using System.Net;
 
 public class UDPClient : MonoBehaviour
 
 {
     // Start is called before the first frame update
-    private UdpClient udpClient; 
+    private UdpClient udpClient;
+    public event Action<string> OnReceive;
     //public UdpClient udpClientB = new UdpClient();
 
     public string message;
@@ -20,7 +22,8 @@ public class UDPClient : MonoBehaviour
         udpClient =  new UdpClient();
         udpClient.Connect("192.168.10.1", 8889);
         IntitiateSDK();
-        Recieve();
+        StartListening();
+        //Recieve();
         
 
     }
@@ -73,7 +76,22 @@ public class UDPClient : MonoBehaviour
         ///udpClientB.Close();
 
     }
-    void Recieve()
+
+    private void StartListening()
+    {
+        var task = Task.Run(() =>
+        {
+            while (true)
+            {
+                IPEndPoint remoteEndPoint = new IPEndPoint(IPAddress.Any, 9000);
+                byte[] receiveBytes = udpClient.Receive(ref remoteEndPoint);
+                string receivedString = Encoding.ASCII.GetString(receiveBytes);
+                OnReceive?.Invoke(receivedString);
+            }
+        });
+    }
+
+    /**void Recieve()
     {
         try
         {
@@ -99,8 +117,8 @@ public class UDPClient : MonoBehaviour
 
         
 
-    }
-        
+    }**/
+
 
     public void CheckBattery() {
         SendtoDrone("battery?");
@@ -110,17 +128,35 @@ public class UDPClient : MonoBehaviour
     public void TakeOff()
     {
         SendtoDrone("takeoff");
-        Recieve();
-        SendtoDrone("cw 90");
-        Recieve();
-        SendtoDrone("up 20");
-        Recieve();
-        SendtoDrone("land");
-        Recieve();
+        //Recieve();
         //Recieve();
 
     }
-    
+
+    public void MoveForward()
+    {
+        SendtoDrone("forward 20");
+        //Recieve();
+        //Recieve();
+
+    }
+
+    public void land()
+    {
+        SendtoDrone("land");
+        //Recieve();
+        //Recieve();
+
+    }
+
+    public void spin()
+    {
+        SendtoDrone("cw 90");
+        //Recieve();
+        //Recieve();
+
+    }
+
 
 
 
