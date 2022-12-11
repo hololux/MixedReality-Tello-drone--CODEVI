@@ -21,11 +21,17 @@ public class UDPClient : MonoBehaviour
     {
         udpClient =  new UdpClient();
         udpClient.Connect("192.168.10.1", 8889);
+        //StartListening();
         IntitiateSDK();
-        StartListening();
+        
         //Recieve();
         
 
+    }
+
+    private void Update()
+    {
+        StartListening();
     }
 
     private void IntitiateSDK()
@@ -65,10 +71,7 @@ public class UDPClient : MonoBehaviour
 
     }
 
-    private void OnDestroy()
-    {
-        DisconnectTello();
-    }
+    
 
     public void DisconnectTello()
     {
@@ -87,6 +90,12 @@ public class UDPClient : MonoBehaviour
                 byte[] receiveBytes = udpClient.Receive(ref remoteEndPoint);
                 string receivedString = Encoding.ASCII.GetString(receiveBytes);
                 OnReceive?.Invoke(receivedString);
+                Debug.Log("This is the message you received " +
+                                receivedString.ToString());
+                Debug.Log("This message was sent from " +
+                                            remoteEndPoint.Address.ToString() +
+                                            " on their port number " +
+                                            remoteEndPoint.Port.ToString());
             }
         });
     }
@@ -147,7 +156,9 @@ public class UDPClient : MonoBehaviour
 
     public void spin()
     {
+        Sleep(5);
         SendtoDrone("cw 90");
+        Sleep(5);
     }
     public void Square()
     {
