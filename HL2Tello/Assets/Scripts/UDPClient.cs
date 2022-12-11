@@ -136,25 +136,55 @@ public class UDPClient : MonoBehaviour
     public void MoveForward()
     {
         SendtoDrone("forward 20");
-        //Recieve();
-        //Recieve();
 
     }
 
     public void land()
     {
         SendtoDrone("land");
-        //Recieve();
-        //Recieve();
 
     }
 
     public void spin()
     {
         SendtoDrone("cw 90");
-        //Recieve();
-        //Recieve();
+    }
+    public void Square()
+    {
+        SendtoDrone("back 50");
+        Sleep(8);
+        SendtoDrone("left 50");
+        Sleep(8);
+        SendtoDrone("forward 50");
+        Sleep(8);
+        SendtoDrone("right 50");
+    }
 
+
+    public void Bounce()
+    {
+        int verticalSpeed = 20;
+        int distance=60;
+        int times=3;
+        int bounceDelay = distance / verticalSpeed;
+        for (int i = 0; i < times; i++)
+        {
+            SendtoDrone("down" + distance.ToString());
+            Sleep(5);
+            SendtoDrone("up" + distance.ToString());
+            Sleep(5);
+        }
+
+    }
+
+    public void Flip()
+    {
+        SendtoDrone("flip r");
+    }
+
+    IEnumerator Sleep(int seconds)
+    {
+        yield return new WaitForSeconds(seconds);
     }
 
 
