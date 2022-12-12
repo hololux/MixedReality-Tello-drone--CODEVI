@@ -21,7 +21,7 @@ public class UDPClient : MonoBehaviour
     {
         udpClient =  new UdpClient();
         udpClient.Connect("192.168.10.1", 8889);
-        //StartListening();
+        StartListening();
         IntitiateSDK();
         
         //Recieve();
@@ -29,10 +29,10 @@ public class UDPClient : MonoBehaviour
 
     }
 
-    private void Update()
+    /**private void Update()
     {
         StartListening();
-    }
+    }**/
 
     private void IntitiateSDK()
     {
@@ -130,6 +130,7 @@ public class UDPClient : MonoBehaviour
 
 
     public void CheckBattery() {
+        
         SendtoDrone("battery?");
         //Recieve();
     }
@@ -176,13 +177,14 @@ public class UDPClient : MonoBehaviour
     {
         int verticalSpeed = 20;
         int distance=60;
-        int times=3;
+        int times=2;
         int bounceDelay = distance / verticalSpeed;
+        SendtoDrone("up 90");
         for (int i = 0; i < times; i++)
         {
-            SendtoDrone("down" + distance.ToString());
+            SendtoDrone("down" + " " + distance.ToString());
             Sleep(5);
-            SendtoDrone("up" + distance.ToString());
+            SendtoDrone("up" + " " + distance.ToString());
             Sleep(5);
         }
 

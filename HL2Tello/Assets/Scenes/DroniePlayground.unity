@@ -6001,7 +6001,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 160998212}
         m_TargetAssemblyTypeName: UDPClient, Assembly-CSharp
-        m_MethodName: spin
+        m_MethodName: CheckBattery
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
