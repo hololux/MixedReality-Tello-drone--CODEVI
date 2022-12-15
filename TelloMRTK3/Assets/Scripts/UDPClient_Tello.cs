@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Net;
 
-public class UDPClient : MonoBehaviour
+public class UDPClient_Tello : MonoBehaviour
 
 {
     // Start is called before the first frame update
@@ -15,7 +15,7 @@ public class UDPClient : MonoBehaviour
     public event Action<string> OnReceive;
     //public UdpClient udpClientB = new UdpClient();
 
-    public string message;
+   
 
     public void ConnectToTello()
     {
