@@ -178,19 +178,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: ConnectionHandler_UPD
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7660118780506835239, guid: 4d2b974ccce93394fb32ae0c22348661, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 4d2b974ccce93394fb32ae0c22348661, type: 3}
---- !u!114 &14990072 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7660118780506835239, guid: 4d2b974ccce93394fb32ae0c22348661, type: 3}
-  m_PrefabInstance: {fileID: 14990071}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 14990073}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bfb45fcc6f66dc247ab671fc757f5cd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &14990073 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7660118780506835233, guid: 4d2b974ccce93394fb32ae0c22348661, type: 3}
@@ -206,6 +196,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ddac874638513ec4cb7c7dd9df8af632, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &14990075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 14990073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 793e286171eba6841ae077f01d9a47bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &32424643
@@ -566,66 +568,98 @@ PrefabInstance:
     - target: {fileID: 4438459728954904969, guid: adcc1004da3629543a29d3ec829e2f12, type: 3}
       propertyPath: onClicked.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 14990072}
+      objectReference: {fileID: 14990075}
     - target: {fileID: 4438459728954904969, guid: adcc1004da3629543a29d3ec829e2f12, type: 3}
       propertyPath: onClicked.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: spin
       objectReference: {fileID: 0}
+    - target: {fileID: 4438459728954904969, guid: adcc1004da3629543a29d3ec829e2f12, type: 3}
+      propertyPath: onClicked.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: DroneHandler, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 4438459729425620340, guid: adcc1004da3629543a29d3ec829e2f12, type: 3}
       propertyPath: onClicked.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 14990072}
+      objectReference: {fileID: 14990075}
     - target: {fileID: 4438459729425620340, guid: adcc1004da3629543a29d3ec829e2f12, type: 3}
       propertyPath: onClicked.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Flip
       objectReference: {fileID: 0}
+    - target: {fileID: 4438459729425620340, guid: adcc1004da3629543a29d3ec829e2f12, type: 3}
+      propertyPath: onClicked.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: DroneHandler, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 4438459729661868946, guid: adcc1004da3629543a29d3ec829e2f12, type: 3}
       propertyPath: onClicked.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 14990072}
+      objectReference: {fileID: 14990075}
     - target: {fileID: 4438459729661868946, guid: adcc1004da3629543a29d3ec829e2f12, type: 3}
       propertyPath: onClicked.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: MoveForward
       objectReference: {fileID: 0}
+    - target: {fileID: 4438459729661868946, guid: adcc1004da3629543a29d3ec829e2f12, type: 3}
+      propertyPath: onClicked.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: DroneHandler, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 4438459729767003182, guid: adcc1004da3629543a29d3ec829e2f12, type: 3}
       propertyPath: onClicked.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 14990072}
+      objectReference: {fileID: 14990075}
     - target: {fileID: 4438459729767003182, guid: adcc1004da3629543a29d3ec829e2f12, type: 3}
       propertyPath: onClicked.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Bounce
       objectReference: {fileID: 0}
+    - target: {fileID: 4438459729767003182, guid: adcc1004da3629543a29d3ec829e2f12, type: 3}
+      propertyPath: onClicked.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: DroneHandler, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 4438459730658741055, guid: adcc1004da3629543a29d3ec829e2f12, type: 3}
       propertyPath: onClicked.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 14990072}
+      objectReference: {fileID: 14990075}
     - target: {fileID: 4438459730658741055, guid: adcc1004da3629543a29d3ec829e2f12, type: 3}
       propertyPath: onClicked.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Square
       objectReference: {fileID: 0}
+    - target: {fileID: 4438459730658741055, guid: adcc1004da3629543a29d3ec829e2f12, type: 3}
+      propertyPath: onClicked.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: DroneHandler, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 6129440043436614414, guid: adcc1004da3629543a29d3ec829e2f12, type: 3}
       propertyPath: onClicked.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 14990072}
+      objectReference: {fileID: 14990075}
     - target: {fileID: 6129440043436614414, guid: adcc1004da3629543a29d3ec829e2f12, type: 3}
       propertyPath: onClicked.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: TakeOff
       objectReference: {fileID: 0}
+    - target: {fileID: 6129440043436614414, guid: adcc1004da3629543a29d3ec829e2f12, type: 3}
+      propertyPath: onClicked.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: DroneHandler, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 6129440044114760275, guid: adcc1004da3629543a29d3ec829e2f12, type: 3}
       propertyPath: onClicked.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 7660118780506835239, guid: 4d2b974ccce93394fb32ae0c22348661, type: 3}
+      objectReference: {fileID: 14990075}
     - target: {fileID: 6129440044114760275, guid: adcc1004da3629543a29d3ec829e2f12, type: 3}
       propertyPath: onClicked.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: land
       objectReference: {fileID: 0}
+    - target: {fileID: 6129440044114760275, guid: adcc1004da3629543a29d3ec829e2f12, type: 3}
+      propertyPath: onClicked.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: DroneHandler, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 6129440044753484466, guid: adcc1004da3629543a29d3ec829e2f12, type: 3}
       propertyPath: isToggled.onEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 14990072}
+      objectReference: {fileID: 14990075}
     - target: {fileID: 6129440044753484466, guid: adcc1004da3629543a29d3ec829e2f12, type: 3}
       propertyPath: isToggled.onEntered.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: ConnectToTello
+      objectReference: {fileID: 0}
+    - target: {fileID: 6129440044753484466, guid: adcc1004da3629543a29d3ec829e2f12, type: 3}
+      propertyPath: isToggled.onEntered.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: DroneHandler, Assembly-CSharp
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: adcc1004da3629543a29d3ec829e2f12, type: 3}

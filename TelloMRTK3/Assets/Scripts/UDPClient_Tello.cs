@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Net;
 
-public class UDPClient_Tello : MonoBehaviour
+public class UDPClient_Tello 
 
 {
     // Start is called before the first frame update
@@ -15,14 +15,16 @@ public class UDPClient_Tello : MonoBehaviour
     public event Action<string> OnReceive;
     //public UdpClient udpClientB = new UdpClient();
 
+
    
 
-    public void ConnectToTello()
+    public void ConnectToTello(string ip, int port)
     {
+
         udpClient =  new UdpClient();
-        udpClient.Connect("192.168.10.1", 8889);
+        udpClient.Connect(ip, port);
         StartListening();
-        IntitiateSDK();
+        //IntitiateSDK();
         
         //Recieve();
         
@@ -34,7 +36,7 @@ public class UDPClient_Tello : MonoBehaviour
         StartListening();
     }**/
 
-    private void IntitiateSDK()
+    public void IntitiateSDK()
     {
 
         try
@@ -53,7 +55,7 @@ public class UDPClient_Tello : MonoBehaviour
 
     }
 
-    void SendtoDrone(string message)
+    public void SendtoDrone(string message)
     {
         try
         {   
@@ -129,76 +131,7 @@ public class UDPClient_Tello : MonoBehaviour
     }**/
 
 
-    public void CheckBattery() {
-        
-        SendtoDrone("battery?");
-        //Recieve();
-    }
-
-    public void TakeOff()
-    {
-        SendtoDrone("takeoff");
-        //Recieve();
-        //Recieve();
-
-    }
-
-    public void MoveForward()
-    {
-        SendtoDrone("forward 20");
-
-    }
-
-    public void land()
-    {
-        SendtoDrone("land");
-
-    }
-
-    public void spin()
-    {
-        Sleep(5);
-        SendtoDrone("cw 90");
-        Sleep(5);
-    }
-    public void Square()
-    {
-        SendtoDrone("back 50");
-        Sleep(8);
-        SendtoDrone("left 50");
-        Sleep(8);
-        SendtoDrone("forward 50");
-        Sleep(8);
-        SendtoDrone("right 50");
-    }
-
-
-    public void Bounce()
-    {
-        int verticalSpeed = 20;
-        int distance=60;
-        int times=2;
-        int bounceDelay = distance / verticalSpeed;
-        SendtoDrone("up 90");
-        for (int i = 0; i < times; i++)
-        {
-            SendtoDrone("down" + " " + distance.ToString());
-            Sleep(5);
-            SendtoDrone("up" + " " + distance.ToString());
-            Sleep(5);
-        }
-
-    }
-
-    public void Flip()
-    {
-        SendtoDrone("flip r");
-    }
-
-    IEnumerator Sleep(int seconds)
-    {
-        yield return new WaitForSeconds(seconds);
-    }
+    
 
 
 
