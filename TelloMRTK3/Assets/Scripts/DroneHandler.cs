@@ -5,11 +5,13 @@ using UnityEngine;
 public class DroneHandler : MonoBehaviour
 {
     private UDPClient_Tello telloClient;
-    private UDPClient_Tello telloStateClient;
+    private UDPServer_Tello telloStateServer;
+    //private UDPClient_Tello telloStateClient;
 
     private void Start()
     {
         telloClient = new UDPClient_Tello();
+        telloStateServer = new UDPServer_Tello();
 
         
     }
@@ -18,6 +20,10 @@ public class DroneHandler : MonoBehaviour
     {
         telloClient.ConnectToTello("192.168.10.1", 8889);
         telloClient.IntitiateSDK();
+        Debug.Log(Time.realtimeSinceStartup);
+        Sleep(3);
+        Debug.Log(Time.realtimeSinceStartup);
+        telloStateServer.StartServer(8890);
     }
 
   
