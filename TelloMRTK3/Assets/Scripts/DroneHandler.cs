@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Threading.Tasks;
 
 public class DroneHandler : MonoBehaviour
 {
@@ -16,14 +17,16 @@ public class DroneHandler : MonoBehaviour
         
     }
 
-    public void ConnectToTello()
+    public async void ConnectToTello()
     {
         telloClient.ConnectToTello("192.168.10.1", 8889);
         telloClient.IntitiateSDK();
         Debug.Log(Time.realtimeSinceStartup);
-        Sleep(3);
+        await Task.Delay(3000);
+        
         Debug.Log(Time.realtimeSinceStartup);
-        telloStateServer.StartServer(8890);
+        telloStateServer.StartServer(1111);
+        telloClient.SendtoDrone("streamon");
     }
 
   
@@ -50,11 +53,12 @@ public class DroneHandler : MonoBehaviour
         telloClient.SendtoDrone("land");
     }
 
-    public void spin()
+    public async void spin()
     {
         Sleep(5);
         telloClient.SendtoDrone("cw 90");
         Sleep(5);
+        
     }
     public void Square()
     {

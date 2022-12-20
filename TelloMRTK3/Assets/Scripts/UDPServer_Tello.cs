@@ -19,7 +19,7 @@ public class UDPServer_Tello : MonoBehaviour
     public void StartServer(int port)
     {
         _listenOn = (new IPEndPoint(IPAddress.Parse("0.0.0.0"), port));
-        udpServer = new UdpClient(_listenOn);
+        udpServer = new UdpClient(port);
         StartListening();
     }
 
@@ -30,19 +30,19 @@ public class UDPServer_Tello : MonoBehaviour
             while (true)
             {
                 // 
-                
 
 
-                IPEndPoint remoteEndPoint = new IPEndPoint(IPAddress.Parse("192.168.10.1"), 8889);
-                byte[] receiveBytes = udpServer.Receive(ref remoteEndPoint);
+
+                IPEndPoint groupEP = new IPEndPoint(IPAddress.Any, _listenOn.Port);
+                byte[] receiveBytes = udpServer.Receive(ref groupEP);
                 string receivedString = Encoding.ASCII.GetString(receiveBytes);
                 OnReceive?.Invoke(receivedString);
                 Debug.Log("This is the message you received from Server " +
                                 receivedString.ToString());
                 Debug.Log("This message was sent from  Server " +
-                                            remoteEndPoint.Address.ToString() +
+                                            groupEP.Address.ToString() +
                                             " on their port number " +
-                                            remoteEndPoint.Port.ToString());
+                                            groupEP.Port.ToString());
             }
         });
     }
