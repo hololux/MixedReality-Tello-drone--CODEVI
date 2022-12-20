@@ -6,27 +6,27 @@ using System.Threading.Tasks;
 public class DroneHandler : MonoBehaviour
 {
     private UDPClient_Tello telloClient;
-    private UDPServer_Tello telloStateServer;
+    //private UDPServer_Tello telloStateServer;
     //private UDPClient_Tello telloStateClient;
 
     private void Start()
     {
         telloClient = new UDPClient_Tello();
-        telloStateServer = new UDPServer_Tello();
+        //telloStateServer = new UDPServer_Tello();
 
         
     }
 
-    public async void ConnectToTello()
+    public void ConnectToTello()
     {
         telloClient.ConnectToTello("192.168.10.1", 8889);
         telloClient.IntitiateSDK();
-        Debug.Log(Time.realtimeSinceStartup);
+        /**De//bug.Log(Time.realtimeSinceStartup);
         await Task.Delay(3000);
         
         Debug.Log(Time.realtimeSinceStartup);
         telloStateServer.StartServer(1111);
-        telloClient.SendtoDrone("streamon");
+        telloClient.SendtoDrone("streamon");**/
     }
 
   
