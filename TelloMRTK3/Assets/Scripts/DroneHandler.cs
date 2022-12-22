@@ -15,6 +15,11 @@ public class DroneHandler : MonoBehaviour
         
     }
 
+    public void StartStream()
+    {
+        telloClient.SendtoDrone("streamon");
+    }
+
     public void ConnectToTello()
     {
         telloClient.ConnectToTello("192.168.10.1", 8889);
