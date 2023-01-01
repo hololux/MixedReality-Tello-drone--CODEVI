@@ -39,7 +39,24 @@ public class DroneHandler : MonoBehaviour
         telloClient.SendtoDrone("takeoff");
 
     }
+    public void MoveRight()
+    {
+        telloClient.SendtoDrone("right 50");
 
+    }
+
+    public void MoveLeft()
+    {
+        telloClient.SendtoDrone("left 50");
+
+    }
+
+
+    public void MoveBack()
+    {
+        telloClient.SendtoDrone("back 50");
+
+    }
     public void MoveForward()
     {
         telloClient.SendtoDrone("forward 20");
