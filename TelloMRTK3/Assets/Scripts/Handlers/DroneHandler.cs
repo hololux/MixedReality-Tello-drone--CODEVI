@@ -10,9 +10,6 @@ public class DroneHandler : MonoBehaviour
     private void Start()
     {
         telloClient = new UDPClient_Tello();
-
-
-        
     }
 
     public void StartStream()
@@ -29,7 +26,6 @@ public class DroneHandler : MonoBehaviour
   
     public void CheckBattery()
     {
-
         telloClient.SendtoDrone("battery?");
         //Recieve();
     }
