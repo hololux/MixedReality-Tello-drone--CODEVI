@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Drone2DUI.unity
-    guid: b14898df6c91746459a05d0c4773d8c0
+    path: Assets/Scenes/DroniePlayGround.unity
+    guid: 3af30bae388f64c4986d177a1756cdc5
   m_configObjects:
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 2551df0526af19540ab9fc04bac682d2, type: 2}
     com.unity.xr.openxr.settings4: {fileID: 11400000, guid: 63c61f03bbb39cc4987ddb902d16b55c, type: 2}

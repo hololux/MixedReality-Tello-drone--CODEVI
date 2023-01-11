@@ -75,13 +75,16 @@ namespace Hololux.Tello
             
             #if WINDOWS_UWP
             mediaPlayer.Play();
-            #endif 
-            
+            #endif
         }
 
         public void StopVideo()
         {
-            
+            _telloVideoReceiver.StopListen();
+
+            #if WINDOWS_UWP
+            mediaPlayer.Pause();
+            #endif
         }
         
         #if WINDOWS_UWP

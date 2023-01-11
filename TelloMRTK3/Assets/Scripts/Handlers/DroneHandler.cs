@@ -3,24 +3,43 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Threading.Tasks;
 using Hololux.Tello;
+using Hololux.Tello.UI;
 
 public class DroneHandler : MonoBehaviour
 {
     private UDPClient_Tello telloClient;
     private TelloVideoRenderer _telloVideoRenderer;
+    
+    [SerializeField] private DroneUIView droneUIView;
 
     private void Start()
     {
         telloClient = new UDPClient_Tello();
         _telloVideoRenderer = FindObjectOfType<TelloVideoRenderer>(true);
     }
-
-    public void StartStream()
+    
+    private void OnEnable()
     {
-        _telloVideoRenderer.StartVideo();
-        telloClient.SendtoDrone("streamon");
+        droneUIView.OnVideoToggleButtonClicked += OnVideoToggleButtonClicked;
     }
-
+    
+    private void OnDisable()
+    {
+        droneUIView.OnVideoToggleButtonClicked -= OnVideoToggleButtonClicked;
+    }
+    
+    private void OnVideoToggleButtonClicked(object sender, bool toggle)
+    {
+        if (toggle)
+        {
+            StartStream();
+        }
+        else
+        {
+            StopStream();
+        }
+    }
+    
     public void ConnectToTello()
     {
         telloClient.ConnectToTello("192.168.10.1", 8889);
@@ -112,7 +131,6 @@ public class DroneHandler : MonoBehaviour
             telloClient.SendtoDrone("up" + " " + distance.ToString());
             Sleep(5);
         }
-
     }
 
     public void Flip()
@@ -123,5 +141,17 @@ public class DroneHandler : MonoBehaviour
     IEnumerator Sleep(int seconds)
     {
         yield return new WaitForSeconds(seconds);
+    }
+    
+    private void StartStream()
+    {
+        _telloVideoRenderer.StartVideo();
+        telloClient.SendtoDrone("streamon");
+    }
+    
+    private void StopStream()
+    {
+        _telloVideoRenderer.StopVideo();
+        telloClient.SendtoDrone("streamoff");
     }
 }

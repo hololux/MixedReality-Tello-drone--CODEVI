@@ -14,7 +14,6 @@ namespace Hololux.Tello
     class TelloVideoReceiver
     {
         private readonly int LocalPort = 11111;
-
         private readonly ConcurrentQueue<VideoBuffer> _samples = new ConcurrentQueue<VideoBuffer>();
         private TimeSpan _timeIndex = TimeSpan.FromSeconds(0);
         private readonly Stopwatch _watch = new Stopwatch();
@@ -28,7 +27,18 @@ namespace Hololux.Tello
                 await Task.Run(async () => await Listen(this._cancellationTokenSource.Token));
             }
         }
-
+        
+        public void StopListen()
+        {
+            if (_cancellationTokenSource != null
+                && !_cancellationTokenSource.IsCancellationRequested)
+            {
+                _cancellationTokenSource.Cancel(false);
+                _cancellationTokenSource.Dispose();
+                _cancellationTokenSource = null;
+            }
+        }
+        
         public VideoBuffer GetSample()
         {
             var wait = default(SpinWait);
@@ -42,7 +52,7 @@ namespace Hololux.Tello
             return result;
         }
         
-        protected async Task Listen(CancellationToken cancellationToken)
+        private async Task Listen(CancellationToken cancellationToken)
         {
             if (cancellationToken == null)
             {
@@ -61,16 +71,14 @@ namespace Hololux.Tello
                         {
                             var connect = await client.ReceiveAsync();
                             _timeIndex = _watch.Elapsed;
-                            var sample = new VideoBuffer(connect.Buffer, _timeIndex, _watch.Elapsed - _timeIndex);
+                            var buffer = new VideoBuffer(connect.Buffer, _timeIndex, _watch.Elapsed - _timeIndex);
                             
-                            UnityEngine.Debug.Log("Write line");
-
                             if (!_watch.IsRunning)
                             {
                                 _watch.Start();
                             }
 
-                            _samples.Enqueue(sample);
+                            _samples.Enqueue(buffer);
                         }
                         else
                         {

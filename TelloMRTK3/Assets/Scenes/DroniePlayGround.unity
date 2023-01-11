@@ -242,6 +242,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 793e286171eba6841ae077f01d9a47bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  droneUIView: {fileID: 615144076}
 --- !u!1001 &32424643
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4458,8 +4459,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 615144075}
+  - component: {fileID: 615144076}
   m_Layer: 0
-  m_Name: DroneController
+  m_Name: DroneUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4489,8 +4491,21 @@ Transform:
   - {fileID: 1177109212}
   - {fileID: 810238469}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 20, y: 0, z: 0}
+--- !u!114 &615144076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 615144074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ccd88befdd8f2f4b8c877fe36439208, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  videoToggleButton: {fileID: 1177109219}
 --- !u!1 &656078973
 GameObject:
   m_ObjectHideFlags: 0
@@ -8090,19 +8105,7 @@ MonoBehaviour:
         m_Calls: []
   onClicked:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 14990075}
-        m_TargetAssemblyTypeName: DroneHandler, Assembly-CSharp
-        m_MethodName: StartStream
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   onEnabled:
     m_PersistentCalls:
       m_Calls: []
@@ -15454,7 +15457,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2898000918338904467}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.0003, y: 0, z: 0}
+  m_LocalPosition: {x: 0.0224, y: 0, z: -0.0054}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8367012171866717958}
@@ -15557,12 +15560,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2898000919382608554}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.0078}
+  m_LocalPosition: {x: -0.1139, y: -0.051, z: 0.194}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2898000918338904466}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2898000919382608471
 MonoBehaviour:
