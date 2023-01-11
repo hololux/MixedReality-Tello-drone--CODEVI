@@ -51,6 +51,18 @@ public class DroneHandler : MonoBehaviour
 
     }
 
+    public void Ascend()
+    {
+        telloClient.SendtoDrone("up 40");
+
+    }
+
+    public void Descend()
+    {
+        telloClient.SendtoDrone("down 40");
+
+    }
+
 
     public void MoveBack()
     {
@@ -59,7 +71,7 @@ public class DroneHandler : MonoBehaviour
     }
     public void MoveForward()
     {
-        telloClient.SendtoDrone("forward 20");
+        telloClient.SendtoDrone("forward 50");
     }
 
     public void land()
@@ -67,11 +79,11 @@ public class DroneHandler : MonoBehaviour
         telloClient.SendtoDrone("land");
     }
 
-    public async void spin()
+    public void spin()
     {
-        Sleep(5);
+        
         telloClient.SendtoDrone("cw 90");
-        Sleep(5);
+        
         
     }
     public void Square()
