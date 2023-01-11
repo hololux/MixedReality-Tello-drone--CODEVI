@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Net;
 
-public class UDPClient_Tello: MonoBehaviour
+public class UDPClient_Tello
 
 {
     // Start is called before the first frame update

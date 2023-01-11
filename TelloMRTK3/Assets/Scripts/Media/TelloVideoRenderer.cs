@@ -54,7 +54,6 @@ namespace Hololux.Tello
         private void Start()
         {
             _telloVideoReceiver = new TelloVideoReceiver();
-            
             InitializeVideo();
         }
         

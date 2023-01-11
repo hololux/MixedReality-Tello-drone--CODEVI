@@ -2,18 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Threading.Tasks;
+using Hololux.Tello;
 
 public class DroneHandler : MonoBehaviour
 {
     private UDPClient_Tello telloClient;
+    private TelloVideoRenderer _telloVideoRenderer;
 
     private void Start()
     {
         telloClient = new UDPClient_Tello();
+        _telloVideoRenderer = FindObjectOfType<TelloVideoRenderer>(true);
     }
 
     public void StartStream()
     {
+        _telloVideoRenderer.StartVideo();
         telloClient.SendtoDrone("streamon");
     }
 
