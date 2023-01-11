@@ -2,6 +2,16 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Runtime.InteropServices.WindowsRuntime;
+
+#if WINDOWS_UWP
+using Windows.Media.Playback;
+using Windows.Media.Core;
+using Windows.Graphics.DirectX.Direct3D11;
+using Windows.Graphics.Imaging;
+using Microsoft.Graphics.Canvas;
+using Windows.Media.MediaProperties;
+#endif
 
 namespace Hololux.Tello
 {
@@ -19,6 +29,7 @@ namespace Hololux.Tello
         
         private TelloVideoReceiver _telloVideoReceiver;
         private Queue<byte[]> _frames;
+        private bool _frameArrivedOnce;
         
         private void Awake()
         {
@@ -29,6 +40,14 @@ namespace Hololux.Tello
             tex =  new Texture2D(frameServerDest.PixelWidth, frameServerDest.PixelHeight, UnityEngine.TextureFormat.RGBA32, false);
             canvasDevice = CanvasDevice.GetSharedDevice();
             canvasBitmap = CanvasBitmap.CreateFromSoftwareBitmap(canvasDevice, frameServerDest);
+            
+            
+            mediaPlayer = new MediaPlayer();
+            mediaPlayer.IsVideoFrameServerEnabled = true;
+            mediaPlayer.VideoFrameAvailable += MediaPlayer_VideoFrameAvailable;
+            mediaPlayer.MediaFailed += mediaPlayer_Failed;
+            mediaPlayer.MediaOpened += mediaPlayer_Opened;
+            mediaPlayer.RealTimePlayback = true;
             #endif
         }
 
@@ -44,7 +63,7 @@ namespace Hololux.Tello
             if (_frames.Count!=0)
             {
                 #if WINDOWS_UWP
-                tex.LoadRawTextureData(frames.Dequeue());
+                tex.LoadRawTextureData(_frames.Dequeue());
                 tex.Apply();
                 rawImageScreen.texture= tex;
                 #endif 
@@ -67,7 +86,7 @@ namespace Hololux.Tello
         }
         
         #if WINDOWS_UWP
-        private void mediaPlayer_VideoFrameAvailable(MediaPlayer sender, object args)
+        private void MediaPlayer_VideoFrameAvailable(MediaPlayer sender, object args)
         {
             sender.CopyFrameToVideoSurface(canvasBitmap);
             byte[] bytes = canvasBitmap.GetPixelBytes();
@@ -85,7 +104,6 @@ namespace Hololux.Tello
              Debug.Log("media faild");
              Debug.Log(args.Error.ToString() );
              Debug.Log(args.ErrorMessage);
-             mediaPlayer.Source = MediaSource.CreateFromUri(_playUri);
         }
         
         private void mediaPlayer_Opened(MediaPlayer sender, object args)
