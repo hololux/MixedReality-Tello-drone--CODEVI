@@ -15,7 +15,7 @@ namespace Hololux.Tello
     {
         private readonly int LocalPort = 11111;
 
-        private readonly ConcurrentQueue<VideoSample> _samples = new ConcurrentQueue<VideoSample>();
+        private readonly ConcurrentQueue<VideoBuffer> _samples = new ConcurrentQueue<VideoBuffer>();
         private TimeSpan _timeIndex = TimeSpan.FromSeconds(0);
         private readonly Stopwatch _watch = new Stopwatch();
         private CancellationTokenSource _cancellationTokenSource = null;
@@ -29,10 +29,10 @@ namespace Hololux.Tello
             }
         }
 
-        public VideoSample GetSample()
+        public VideoBuffer GetSample()
         {
             var wait = default(SpinWait);
-            VideoSample result;
+            VideoBuffer result;
 
             while (_samples.Count == 0 || !_samples.TryDequeue(out result))
             {
@@ -61,7 +61,7 @@ namespace Hololux.Tello
                         {
                             var connect = await client.ReceiveAsync();
                             _timeIndex = _watch.Elapsed;
-                            var sample = new VideoSample(connect.Buffer, _timeIndex, _watch.Elapsed - _timeIndex);
+                            var sample = new VideoBuffer(connect.Buffer, _timeIndex, _watch.Elapsed - _timeIndex);
                             
                             UnityEngine.Debug.Log("Write line");
 
@@ -87,7 +87,7 @@ namespace Hololux.Tello
     }
     
     
-    public sealed class VideoSample
+    public sealed class VideoBuffer
     {
         public byte[] Buffer { get; }
 
@@ -97,7 +97,7 @@ namespace Hololux.Tello
 
         public int Length => this.Buffer.Length;
 
-        public VideoSample()
+        public VideoBuffer()
             : this(
                 Array.Empty<byte>(),
                 TimeSpan.FromSeconds(0),
@@ -105,7 +105,7 @@ namespace Hololux.Tello
         {
         }
 
-        public VideoSample(byte[] buffer, TimeSpan timeIndex, TimeSpan duration)
+        public VideoBuffer(byte[] buffer, TimeSpan timeIndex, TimeSpan duration)
         {
             Buffer = buffer;
             TimeIndex = timeIndex;

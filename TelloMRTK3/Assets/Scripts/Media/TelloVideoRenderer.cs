@@ -47,7 +47,7 @@ namespace Hololux.Tello
             mediaPlayer.VideoFrameAvailable += MediaPlayer_VideoFrameAvailable;
             mediaPlayer.MediaFailed += mediaPlayer_Failed;
             mediaPlayer.MediaOpened += mediaPlayer_Opened;
-            mediaPlayer.RealTimePlayback = true;
+            //mediaPlayer.RealTimePlayback = true;
             #endif
         }
 
