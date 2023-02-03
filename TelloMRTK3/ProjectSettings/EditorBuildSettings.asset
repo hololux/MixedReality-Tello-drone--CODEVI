@@ -9,5 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/DroniePlayGround - Quest Pro.unity
     guid: 403d07ed19632474e90935d197f0f391
   m_configObjects:
+    Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 443c86752b574ab4e8e8b611e95750c4, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 2551df0526af19540ab9fc04bac682d2, type: 2}
     com.unity.xr.openxr.settings4: {fileID: 11400000, guid: 63c61f03bbb39cc4987ddb902d16b55c, type: 2}
