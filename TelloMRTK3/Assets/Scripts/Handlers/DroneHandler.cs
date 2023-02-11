@@ -20,12 +20,18 @@ public class DroneHandler : MonoBehaviour
     
     private void OnEnable()
     {
-        droneUIView.OnVideoToggleButtonClicked += OnVideoToggleButtonClicked;
+        if (droneUIView != null)
+        {
+            droneUIView.OnVideoToggleButtonClicked += OnVideoToggleButtonClicked;
+        }
     }
     
     private void OnDisable()
     {
-        droneUIView.OnVideoToggleButtonClicked -= OnVideoToggleButtonClicked;
+        if (droneUIView != null)
+        {
+            droneUIView.OnVideoToggleButtonClicked -= OnVideoToggleButtonClicked;
+        }
     }
     
     private void OnVideoToggleButtonClicked(object sender, bool toggle)
@@ -63,12 +69,22 @@ public class DroneHandler : MonoBehaviour
         telloClient.SendtoDrone("right 50");
 
     }
+    public void MoveRight(float distance)
+    {
+        telloClient.SendtoDrone("right " + ((int)distance).ToString());
+    }
+
 
     public void MoveLeft()
     {
         telloClient.SendtoDrone("left 50");
-
     }
+
+    public void MoveLeft(float distance)
+    {
+        telloClient.SendtoDrone("left " + ((int)distance).ToString());
+    }
+
 
     public void Ascend()
     {
