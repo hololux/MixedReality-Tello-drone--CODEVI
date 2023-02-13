@@ -37,6 +37,8 @@ public class CubeHandler : MonoBehaviour
 
     private void InitiateMovement(Vector3 direction)
     {
+
+        // using x100 to convert distance from meters to cm
         if (direction.x<0)
         {
             droneHandler.MoveLeft(Mathf.Abs(direction.x) * 100);
@@ -51,13 +53,28 @@ public class CubeHandler : MonoBehaviour
         if (direction.y<0)
         {
             // Move Down
+            droneHandler.Descend(Mathf.Abs(direction.y) * 100);
         }
 
         else if (direction.y>0)
         {
             // Move up
+            droneHandler.Ascend(Mathf.Abs(direction.y) * 100);
 
-        } 
+        }
+
+        if (direction.z < 0)
+        {
+            // Move Back
+            droneHandler.MoveBack(Mathf.Abs(direction.z) * 100);
+        }
+
+        else if (direction.z > 0)
+        {
+            // Move forward
+            droneHandler.MoveForward(Mathf.Abs(direction.z) * 100);
+
+        }
 
 
     }

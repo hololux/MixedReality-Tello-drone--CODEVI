@@ -92,10 +92,20 @@ public class DroneHandler : MonoBehaviour
 
     }
 
+    public void Ascend(float distance)
+    {
+        telloClient.SendtoDrone("up " + ((int)distance).ToString());
+    }
+
     public void Descend()
     {
         telloClient.SendtoDrone("down 40");
 
+    }
+
+    public void Descend(float distance)
+    {
+        telloClient.SendtoDrone("down " + ((int)distance).ToString());
     }
 
 
@@ -104,10 +114,21 @@ public class DroneHandler : MonoBehaviour
         telloClient.SendtoDrone("back 50");
 
     }
+
+    public void MoveBack(float distance)
+    {
+        telloClient.SendtoDrone("back " + ((int)distance).ToString());
+    }
     public void MoveForward()
     {
         telloClient.SendtoDrone("forward 50");
     }
+
+    public void MoveForward(float distance)
+    {
+        telloClient.SendtoDrone("forward " + ((int)distance).ToString());
+    }
+
 
     public void land()
     {
