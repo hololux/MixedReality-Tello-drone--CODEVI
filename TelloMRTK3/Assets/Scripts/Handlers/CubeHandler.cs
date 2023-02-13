@@ -9,6 +9,17 @@ public class CubeHandler : MonoBehaviour
     private Vector3 initialPostion;
     private Vector3 finalPosition;
    
+    private void Update()
+    {
+        Vector3 objectPosition = cube.transform.position;
+        
+
+
+
+        //Debug.Log(objectPosition);
+        //Debug.Log(objectphysics.velocity);
+
+    }
     public void IsGrabbed() 
     {
         initialPostion = cube.transform.position;
@@ -30,62 +41,50 @@ public class CubeHandler : MonoBehaviour
         // using x100 to convert distance from meters to cm
         if (direction.x<0)
         {
-            droneHandler.MoveLeft(ConvertToCentimeters(direction.x));
-            
-            
+            droneHandler.MoveLeft(Mathf.Abs(direction.x) * 100);
             
             // Move left
         }
         else if (direction.x >0)
         {
-            droneHandler.MoveRight(ConvertToCentimeters(direction.x));
+            droneHandler.MoveRight(Mathf.Abs(direction.x)*100);
             // Move Right
         }
         if (direction.y<0)
         {
             // Move Down
-            droneHandler.Descend(ConvertToCentimeters(direction.y));
-           
+            droneHandler.Descend(Mathf.Abs(direction.y) * 100);
         }
 
         else if (direction.y>0)
         {
             // Move up
-            droneHandler.Ascend(ConvertToCentimeters(direction.y));
-            
+            droneHandler.Ascend(Mathf.Abs(direction.y) * 100);
 
         }
 
         if (direction.z < 0)
         {
             // Move Back
-            droneHandler.MoveBack(ConvertToCentimeters(direction.z));
-            
+            droneHandler.MoveBack(Mathf.Abs(direction.z) * 100);
         }
 
         else if (direction.z > 0)
         {
             // Move forward
-            droneHandler.MoveForward(ConvertToCentimeters(direction.z));
-            
-
+            droneHandler.MoveForward(Mathf.Abs(direction.z) * 100);
 
         }
 
 
     }
 
-    private static Vector3 Distance(Vector3 initialPostion, Vector3 finalPosition)
+    private static Vector3 Distance(Vector3 initialPostion, Vector3 finalPosition) 
     {
         Vector3 distiance = finalPosition - initialPostion;
 
         return distiance;
-
-    }
-
-    private static float ConvertToCentimeters(float value)
-    {
-        return Mathf.Abs(value * 100f);
-    }
+    
+    } 
 
 }
