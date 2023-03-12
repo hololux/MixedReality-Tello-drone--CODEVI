@@ -8,31 +8,38 @@ public class CubeHandler : MonoBehaviour
     [SerializeField] private DroneHandler droneHandler;
     private Vector3 initialPostion;
     private Vector3 finalPosition;
-   
-    private void Update()
+    private Vector3 startPosition;
+
+    private void Start()
     {
-        Vector3 objectPosition = cube.transform.position;
-        
-
-
-
-        //Debug.Log(objectPosition);
-        //Debug.Log(objectphysics.velocity);
-
+        // Store the start or main position of the game object
+        startPosition = transform.position = new Vector3(0, 0, 0.25f);
     }
+
     public void IsGrabbed() 
     {
         initialPostion = cube.transform.position;
         Debug.Log("Cube is grabbed");
-
     }
     public void IsReleased()
     {
         finalPosition = cube.transform.position;
         Vector3 distance = Distance(initialPostion, finalPosition);
         InitiateMovement(distance);
-
+        SnapToInitialPosition();
         Debug.Log("Cube is released");
+    }
+
+    public void SnapToInitialPosition()
+    {
+        if (transform.position != startPosition)
+        {
+            // Snap the game object back to its start or main position
+            transform.position = startPosition;
+            // Set the rotation of the game object to (0, 0, 0)
+            transform.rotation = Quaternion.identity;
+        }
+
     }
 
     private void InitiateMovement(Vector3 direction)
@@ -41,50 +48,51 @@ public class CubeHandler : MonoBehaviour
         // using x100 to convert distance from meters to cm
         if (direction.x<0)
         {
-            droneHandler.MoveLeft(Mathf.Abs(direction.x) * 100);
+            droneHandler.MoveLeft(ConvertToCentimeters(direction.x));
             
             // Move left
         }
         else if (direction.x >0)
         {
-            droneHandler.MoveRight(Mathf.Abs(direction.x)*100);
+            droneHandler.MoveRight(ConvertToCentimeters(direction.x));
             // Move Right
         }
         if (direction.y<0)
         {
             // Move Down
-            droneHandler.Descend(Mathf.Abs(direction.y) * 100);
+            droneHandler.Descend(ConvertToCentimeters(direction.y));
+           
         }
 
         else if (direction.y>0)
         {
             // Move up
-            droneHandler.Ascend(Mathf.Abs(direction.y) * 100);
-
+            droneHandler.Ascend(ConvertToCentimeters(direction.y));
         }
 
         if (direction.z < 0)
         {
             // Move Back
-            droneHandler.MoveBack(Mathf.Abs(direction.z) * 100);
+            droneHandler.MoveBack(ConvertToCentimeters(direction.z));
+            
         }
 
         else if (direction.z > 0)
         {
             // Move forward
-            droneHandler.MoveForward(Mathf.Abs(direction.z) * 100);
-
+            droneHandler.MoveForward(ConvertToCentimeters(direction.z));
         }
-
-
     }
 
-    private static Vector3 Distance(Vector3 initialPostion, Vector3 finalPosition) 
+    private static Vector3 Distance(Vector3 initialPostion, Vector3 finalPosition)
     {
         Vector3 distiance = finalPosition - initialPostion;
-
         return distiance;
-    
-    } 
+    }
+
+    private static float ConvertToCentimeters(float value)
+    {
+        return Mathf.Abs(value * 100f);
+    }
 
 }
