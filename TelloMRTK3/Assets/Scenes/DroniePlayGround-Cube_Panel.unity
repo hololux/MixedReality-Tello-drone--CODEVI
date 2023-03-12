@@ -614,6 +614,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2351505566903569412, guid: 4d7e2f87fefe0ba468719b15288b46e7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2351505567455720332, guid: 4d7e2f87fefe0ba468719b15288b46e7, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -661,6 +665,10 @@ PrefabInstance:
     - target: {fileID: 2351505567455720334, guid: 4d7e2f87fefe0ba468719b15288b46e7, type: 3}
       propertyPath: m_Name
       value: MRTK XR Rig
+      objectReference: {fileID: 0}
+    - target: {fileID: 3712792914886690938, guid: 4d7e2f87fefe0ba468719b15288b46e7, type: 3}
+      propertyPath: m_CameraYOffset
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d7e2f87fefe0ba468719b15288b46e7, type: 3}
