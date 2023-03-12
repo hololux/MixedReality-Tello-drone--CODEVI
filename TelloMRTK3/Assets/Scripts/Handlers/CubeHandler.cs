@@ -8,20 +8,38 @@ public class CubeHandler : MonoBehaviour
     [SerializeField] private DroneHandler droneHandler;
     private Vector3 initialPostion;
     private Vector3 finalPosition;
-   
+    private Vector3 startPosition;
+
+    private void Start()
+    {
+        // Store the start or main position of the game object
+        startPosition = transform.position = new Vector3(0, 0, 0.25f);
+    }
+
     public void IsGrabbed() 
     {
         initialPostion = cube.transform.position;
         Debug.Log("Cube is grabbed");
-
     }
     public void IsReleased()
     {
         finalPosition = cube.transform.position;
         Vector3 distance = Distance(initialPostion, finalPosition);
         InitiateMovement(distance);
-
+        SnapToInitialPosition();
         Debug.Log("Cube is released");
+    }
+
+    public void SnapToInitialPosition()
+    {
+        if (transform.position != startPosition)
+        {
+            // Snap the game object back to its start or main position
+            transform.position = startPosition;
+            // Set the rotation of the game object to (0, 0, 0)
+            transform.rotation = Quaternion.identity;
+        }
+
     }
 
     private void InitiateMovement(Vector3 direction)
@@ -31,8 +49,6 @@ public class CubeHandler : MonoBehaviour
         if (direction.x<0)
         {
             droneHandler.MoveLeft(ConvertToCentimeters(direction.x));
-            
-            
             
             // Move left
         }
@@ -52,8 +68,6 @@ public class CubeHandler : MonoBehaviour
         {
             // Move up
             droneHandler.Ascend(ConvertToCentimeters(direction.y));
-            
-
         }
 
         if (direction.z < 0)
@@ -67,20 +81,13 @@ public class CubeHandler : MonoBehaviour
         {
             // Move forward
             droneHandler.MoveForward(ConvertToCentimeters(direction.z));
-            
-
-
         }
-
-
     }
 
     private static Vector3 Distance(Vector3 initialPostion, Vector3 finalPosition)
     {
         Vector3 distiance = finalPosition - initialPostion;
-
         return distiance;
-
     }
 
     private static float ConvertToCentimeters(float value)
