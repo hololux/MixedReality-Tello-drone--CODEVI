@@ -13,7 +13,7 @@ public class CubeHandler : MonoBehaviour
     private void Start()
     {
         // Store the start or main position of the game object
-        startPosition = transform.position = new Vector3(0, 0, 0.25f);
+        startPosition = transform.position = new Vector3(0, 0, 1f);
     }
 
     public void IsGrabbed() 
